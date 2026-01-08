@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fa">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <title>Hekayat-e Hozur</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v34.0.2/dist/font-face.css" rel="stylesheet" type="text/css" />
+        <link type="text/css" rel="stylesheet" href="{% static 'style.css' %}" />
+        <script src="{% static 'script.js' %}" defer></script>
+    </head>
+
+    <body>
+        <header>گروه فرهنگی هنری محسن</header>
+
+        <div class="container">
+            <div class="card">
+                <div class="title">حکایت حضور</div>
+
+                <!-- خوش آمدگویی -->
+                <div class="step active" id="welcome">
+                    <div class="welcome-step">
+                        <h2>به ششمین جشنواره حکایت حضور خوش آمدید!</h2>
+                        <p>برای رزرو مراحل را ادامه دهید.</p>
+                        <button type="button" id="start">شروع رزرو</button>
+                    </div>
+                </div>
+
+                <!-- شماره تماس -->
+                <div class="step" id="phone">
+                    <div class="message" id="messagePhone"></div>
+                    <div class="input-box">
+                        <input id="phoneInput" placeholder="" maxlength="11">
+                        <label for="phoneInput">شماره تماس</label>
+                    </div>
+                    <button type="button" id='sendphone'>ادامه</button>
+                    <button type="button" class="back">بازگشت</button>
+                </div>
+
+                <!-- کد تایید -->
+                <div class="step" id="verify">
+                    <div class="message" id="messageVerify"></div>
+                    <div class="input-box">
+                        <input id="codeInput" placeholder="" maxlength="4">
+                        <label for="codeInput">کد تایید</label>
+                    </div>
+                    <button type="button" id='checkcode'\>تأیید کد</button>
+                    <button type="button" class="back">بازگشت</button>
+                </div>
+
+                <!-- انتخاب روز -->
+                <div class="step" id="day">
+                    <div class="message" id="messageDay"></div>
+
+                    {% for day in days %}
+                        <div class="day-box" id="{{day.day}}"><span>{{ day.day|capfirst }}</span><span class="day-check">✔</span></div>
+                    {% endfor %}
+
+                    <button type="button" id='choiseday'>تأیید روز</button>
+                    <button type="button" class="back">بازگشت</button>
+
+                </div>
+
+                <!-- اطلاعات گروه -->
+                <div class="step" id="group">
+                    <div class="message" id="messageGroup"></div>
+                    
+                    <div class="input-box">
+                        <input id="leaderName" placeholder="">
+                        <label for="leaderName">نام سرگروه</label>
+                    </div>
+                    
+                    <div class="input-box input-number">
+                        <input type="number" id="maleCount" placeholder=" " max="5" oninput="checkMax(this)">
+                        <label for="maleCount">تعداد آقایان</label>
+                        <button type="button" class="btn btn-plus">+</button>
+                        <button type="button" class="btn btn-minus">-</button>
+                    </div>
+
+                    
+                    <div class="input-box input-number">
+                        <input type="number" id="femaleCount" placeholder=" " max="5" oninput="checkMax(this)">
+                        <label for="femaleCount">تعداد آقایان</label>
+                        <button type="button" class="btn btn-plus">+</button>
+                        <button type="button" class="btn btn-minus">-</button>
+                    </div>
+
+                    
+                    <button type="button" id='senddata'>ثبت نهایی</button>
+                    <button type="button" class="back">بازگشت</button>
+
+                </div>
+
+                <!-- نمایش کد نهایی تایپی -->
+                <div class="step" id="result">
+                    <div class="message" id="finalMessage">رزرو با موفقیت انجام شد! کد ورود شما:</div>
+                    <div class="code-box" id="finalCode"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer>    
+            <div class="right">
+                <span>تماس با ما</span>
+            </div>
+            <div class="left">
+                <span>۰۹۸۷۶۵۴۳۲۱۰</span>
+                <span>۰۹۱۲۳۴۵۶۷۸۹</span>
+            </div>
+        </footer>
+    </body>
+</html>
